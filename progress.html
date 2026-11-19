@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>学习进度 · CS329Z 自学站</title>
+<link rel="stylesheet" href="vendor/katex/katex.min.css"/>
+<link rel="stylesheet" href="css/site.css"/>
+<script src="vendor/marked.min.js"></script>
+<script defer src="vendor/katex/katex.min.js"></script>
+<script defer src="vendor/katex/auto-render.min.js"></script>
+<script defer src="vendor/mermaid.min.js"></script>
+<script src="js/site-shell.js"></script>
+<script src="js/app.js"></script>
+<script src="js/render.md.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/flashcards.js"></script>
+<script src="js/graph.js"></script>
+<script src="data/meta.js"></script>
+<script src="data/quizzes.js"></script>
+<script src="data/flashcards.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  if(window.mermaid) mermaid.initialize({startOnLoad:false, theme: document.documentElement.getAttribute('data-theme')==='dark'?'dark':'default'});
+});
+</script>
+<link rel="stylesheet" href="css/learning.css"/>
+<script src="data/learning.js"></script>
+<script defer src="js/learning.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#mainContent">跳到主要内容</a>
+<header class="topbar"></header>
+
+<div class="layout"><main class="main" id="mainContent">
+<h1>进度仪表盘</h1>
+<p class="muted">数据仅存本机 localStorage，不上传。</p>
+<section id="learningProgress" aria-label="当前学习路线进度"></section>
+<div class="grid">
+  <div class="card"><h3>全课表阅读（15 讲）</h3><div id="lecProg" class="progress-bar"><i style="width:0%"></i></div><p id="lecTxt" class="muted"></p></div>
+  <div class="card"><h3>自测均分</h3><p id="quizTxt" style="font-size:28px;font-weight:800;margin:8px 0">—</p></div>
+  <div class="card"><h3>闪卡认识</h3><p id="flashTxt" style="font-size:28px;font-weight:800;margin:8px 0">—</p></div>
+</div>
+<table class="table" id="progTable"><thead><tr><th>讲次</th><th>完成</th><th>自测</th></tr></thead><tbody></tbody></table>
+<div class="toolbar"><button class="btn secondary" id="resetProg">清空进度</button></div>
+</main></div>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const p=CS329Z.loadProgress();
+  const order=SITE_META.order;
+  let done=0; const rows=[];
+  order.forEach(id=>{
+    const d=p.lectures&&p.lectures[id]&&p.lectures[id].done; if(d) done++;
+    const q=p.quizzes&&p.quizzes[id];
+    rows.push(`<tr><td><a href="lectures/${id}.html">${id}</a></td><td>${d?'✅':'—'}</td><td>${q?`${q.score}/${q.total}`:'—'}</td></tr>`);
+  });
+  document.querySelector('#progTable tbody').innerHTML=rows.join('');
+  const pct=Math.round(100*done/order.length);
+  document.querySelector('#lecProg i').style.width=pct+'%';
+  document.getElementById('lecTxt').textContent=`${done}/${order.length} (${pct}%)`;
+  const qs=Object.values(p.quizzes||{});
+  if(qs.length){const avg=qs.reduce((s,x)=>s+x.score/x.total,0)/qs.length; document.getElementById('quizTxt').textContent=Math.round(avg*100)+'%';}
+  const fs=Object.values(p.flash||{});
+  if(fs.length){document.getElementById('flashTxt').textContent=fs.filter(Boolean).length+'/'+fs.length;}
+  document.getElementById('resetProg').onclick=()=>{if(confirm('确定清空？')){localStorage.removeItem(CS329Z.progressKey);location.reload();}};
+});
+</script>
+
+
+</body></html>

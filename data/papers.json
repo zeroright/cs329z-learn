@@ -1,0 +1,1130 @@
+[
+ {
+  "lecture": "L01",
+  "title": "Toolformer",
+  "url": "https://arxiv.org/abs/2302.04761",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L01",
+  "title": "ReAct",
+  "url": "https://arxiv.org/abs/2210.03629",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L02",
+  "title": "What Are Tools Anyway?",
+  "url": "https://arxiv.org/abs/2403.15452",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L02",
+  "title": "CodeAct",
+  "url": "https://arxiv.org/abs/2402.01030",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L02",
+  "title": "Toolformer",
+  "url": "https://arxiv.org/abs/2302.04761",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L02",
+  "title": "XGrammar",
+  "url": "https://arxiv.org/abs/2411.15100",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "DistServe",
+  "url": "https://arxiv.org/abs/2401.09670",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Attention Is All You Need",
+  "url": "https://arxiv.org/abs/1706.03762",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Longformer",
+  "url": "https://arxiv.org/abs/2004.05150",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Transformers are RNNs",
+  "url": "https://arxiv.org/abs/2006.16236",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Linear Transformers Are Secretly Fast Weight Programmers",
+  "url": "https://arxiv.org/abs/2102.11174",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Gated Delta Networks",
+  "url": "https://arxiv.org/abs/2412.06464",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Kimi Linear",
+  "url": "https://arxiv.org/abs/2510.26692",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "DeepSeek Sparse Attention",
+  "url": "https://arxiv.org/abs/2512.02556",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Grouped-Query Attention",
+  "url": "https://arxiv.org/abs/2305.13245",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "DeepSeek-V2",
+  "url": "https://arxiv.org/abs/2405.04434",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "RoFormer",
+  "url": "https://arxiv.org/abs/2104.09864",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "NoPE Length Generalization",
+  "url": "https://arxiv.org/abs/2305.19466",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Position Interpolation",
+  "url": "https://arxiv.org/abs/2306.15595",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "YaRN",
+  "url": "https://arxiv.org/abs/2309.00071",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "GLM-5",
+  "url": "https://arxiv.org/abs/2602.15763",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Kimi K3",
+  "url": "https://arxiv.org/abs/2607.24653",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "DeepSeek V4",
+  "url": "https://arxiv.org/abs/2606.19348",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Ring Attention",
+  "url": "https://arxiv.org/abs/2310.01889",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Prompt Cache",
+  "url": "https://arxiv.org/abs/2311.04934",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "Can I Buy Your KV Cache?",
+  "url": "https://arxiv.org/abs/2606.13361",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "PagedAttention / vLLM",
+  "url": "https://arxiv.org/abs/2309.06180",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "SGLang / RadixAttention",
+  "url": "https://arxiv.org/abs/2312.07104",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "MemGPT",
+  "url": "https://arxiv.org/abs/2310.08560",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L03",
+  "title": "ReSum",
+  "url": "https://arxiv.org/abs/2509.13313",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "SkillsBench",
+  "url": "https://arxiv.org/abs/2602.12670",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "MemGPT",
+  "url": "https://arxiv.org/abs/2310.08560",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "Agent Workflow Memory (AWM)",
+  "url": "https://arxiv.org/abs/2409.07429",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "Agent Skill Induction (ASI)",
+  "url": "https://arxiv.org/abs/2504.06821",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "ReasoningBank",
+  "url": "https://arxiv.org/abs/2509.25140",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "Mem0",
+  "url": "https://arxiv.org/abs/2504.19413",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "Reflexion",
+  "url": "https://arxiv.org/abs/2303.11366",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "ExpeL",
+  "url": "https://arxiv.org/abs/2308.10144",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "Agent S",
+  "url": "https://arxiv.org/abs/2410.08164",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "Synapse",
+  "url": "https://arxiv.org/abs/2306.07863",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "ICAL",
+  "url": "https://arxiv.org/abs/2406.14596",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "Voyager",
+  "url": "https://arxiv.org/abs/2305.16291",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "DreamCoder",
+  "url": "https://arxiv.org/abs/2006.08381",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "Stitch",
+  "url": "https://arxiv.org/abs/2211.16605",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "LAPS",
+  "url": "https://arxiv.org/abs/2106.11053",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "LILO",
+  "url": "https://arxiv.org/abs/2310.19791",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "SkillWeaver",
+  "url": "https://arxiv.org/abs/2504.07079",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "PolySkill",
+  "url": "https://arxiv.org/abs/2510.15863",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "TroVE",
+  "url": "https://arxiv.org/abs/2401.12869",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L04",
+  "title": "Not All Skills Help",
+  "url": "https://arxiv.org/abs/2606.15390",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Least-to-Most Prompting",
+  "url": "https://arxiv.org/abs/2205.10625",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Decomposed Prompting",
+  "url": "https://arxiv.org/abs/2210.02406",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Code as Policies",
+  "url": "https://arxiv.org/abs/2209.07753",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "SayCan",
+  "url": "https://arxiv.org/abs/2204.01691",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Plan-and-Act",
+  "url": "https://arxiv.org/abs/2503.09572",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Thinking vs. Doing",
+  "url": "https://arxiv.org/abs/2506.07976",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Calibrate-Then-Act",
+  "url": "https://arxiv.org/abs/2602.16699",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Recursive Agent Optimization (RAO)",
+  "url": "https://arxiv.org/abs/2605.06639",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Multi-Agent Computer Use (MACU)",
+  "url": "https://arxiv.org/abs/2606.01533",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Large Language Models are Zero-Shot Reasoners",
+  "url": "https://arxiv.org/abs/2205.11916",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Plan-and-Solve Prompting",
+  "url": "https://arxiv.org/abs/2305.04091",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "STaR",
+  "url": "https://arxiv.org/abs/2203.14465",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "DeepSeek-R1",
+  "url": "https://arxiv.org/abs/2501.12948",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Recursive Language Models",
+  "url": "https://arxiv.org/abs/2512.24601",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "PlanBench",
+  "url": "https://arxiv.org/abs/2206.10498",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "ProgPrompt",
+  "url": "https://arxiv.org/abs/2209.11302",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Binder",
+  "url": "https://arxiv.org/abs/2210.02875",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "UGround",
+  "url": "https://arxiv.org/abs/2410.05243",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Agent S",
+  "url": "https://arxiv.org/abs/2410.08164",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Language Models as Zero-Shot Planners",
+  "url": "https://arxiv.org/abs/2201.07207",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "LLM-Planner",
+  "url": "https://arxiv.org/abs/2212.04088",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Inner Monologue",
+  "url": "https://arxiv.org/abs/2207.05608",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "SwiftSage",
+  "url": "https://arxiv.org/abs/2305.17390",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "The Danger of Overthinking",
+  "url": "https://arxiv.org/abs/2502.08235",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Training Proactive and Personalized LLM Agents (PPP-Agent)",
+  "url": "https://arxiv.org/abs/2511.02208",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Vending-Bench",
+  "url": "https://arxiv.org/abs/2502.15840",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "The Illusion of Diminishing Returns",
+  "url": "https://arxiv.org/abs/2509.09677",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "ADaPT",
+  "url": "https://arxiv.org/abs/2311.05772",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "Web Agents Should Adopt the Plan-Then-Execute Paradigm",
+  "url": "https://arxiv.org/abs/2605.14290",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L05",
+  "title": "TravelPlanner",
+  "url": "https://arxiv.org/abs/2402.01622",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "OLMo",
+  "url": "https://arxiv.org/abs/2402.00838",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "StarCoder",
+  "url": "https://arxiv.org/abs/2305.06161",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "Whitespace-run tokens",
+  "url": "https://arxiv.org/abs/2107.03374",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "Code Llama",
+  "url": "https://arxiv.org/abs/2308.12950",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "Qwen2.5-Coder",
+  "url": "https://arxiv.org/abs/2409.12186",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "InCoder",
+  "url": "https://arxiv.org/abs/2204.05999",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "Scaling study",
+  "url": "https://arxiv.org/abs/2207.14255",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "OctoPack",
+  "url": "https://arxiv.org/abs/2308.07124",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "CodeRL",
+  "url": "https://arxiv.org/abs/2207.01780",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "CodeBLEU",
+  "url": "https://arxiv.org/abs/2009.10297",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "EvalPlus",
+  "url": "https://arxiv.org/abs/2305.01210",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "CodeContests / AlphaCode",
+  "url": "https://arxiv.org/abs/2203.07814",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "NoFunEval",
+  "url": "https://arxiv.org/abs/2401.15963",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "SWE-agent",
+  "url": "https://arxiv.org/abs/2405.15793",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "Agentless",
+  "url": "https://arxiv.org/abs/2407.01489",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "LocAgent",
+  "url": "https://arxiv.org/abs/2503.09089",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "SWE-bench",
+  "url": "https://arxiv.org/abs/2310.06770",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "SWE-Gym",
+  "url": "https://arxiv.org/abs/2412.21139",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "R2E-Gym",
+  "url": "https://arxiv.org/abs/2504.07164",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "SWE-smith",
+  "url": "https://arxiv.org/abs/2504.21798",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "Multi-SWE-bench",
+  "url": "https://arxiv.org/abs/2504.02605",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "SWE-bench Multimodal",
+  "url": "https://arxiv.org/abs/2410.03859",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "VisualWebArena",
+  "url": "https://arxiv.org/abs/2401.13649",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "Commit0",
+  "url": "https://arxiv.org/abs/2412.01769",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "ProgramBench",
+  "url": "https://arxiv.org/abs/2605.03546",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "SWE-Milestone",
+  "url": "https://arxiv.org/abs/2603.13428",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "SWT-Bench",
+  "url": "https://arxiv.org/abs/2406.12952",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "SWE-Playground",
+  "url": "https://arxiv.org/abs/2512.12216",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "Hybrid-Gym",
+  "url": "https://arxiv.org/abs/2602.16819",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L06",
+  "title": "Code World Models",
+  "url": "https://arxiv.org/abs/2405.15383",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "WebArena",
+  "url": "https://arxiv.org/abs/2307.13854",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "VisualWebArena",
+  "url": "https://arxiv.org/abs/2401.13649",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "OSWorld",
+  "url": "https://arxiv.org/abs/2404.07972",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "OpenCUA",
+  "url": "https://arxiv.org/abs/2508.09123",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "CUA-Gym",
+  "url": "https://arxiv.org/abs/2605.25624",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "Multi-Agent Computer Use (MACU)",
+  "url": "https://arxiv.org/abs/2606.01533",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "MiniWoB",
+  "url": "https://arxiv.org/abs/1704.04368",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "WebShop",
+  "url": "https://arxiv.org/abs/2207.01206",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "ReAct",
+  "url": "https://arxiv.org/abs/2210.03629",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "Mind2Web",
+  "url": "https://arxiv.org/abs/2306.06070",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "WebVoyager",
+  "url": "https://arxiv.org/abs/2401.13919",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "ScreenSpot-Pro",
+  "url": "https://arxiv.org/abs/2504.07981",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "Gym-Anything",
+  "url": "https://arxiv.org/abs/2604.06126",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L07",
+  "title": "MolmoWeb",
+  "url": "https://arxiv.org/abs/2604.08516",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L08",
+  "title": "Kimi K3",
+  "url": "https://arxiv.org/abs/2607.24653",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L08",
+  "title": "DeepSeek-R1",
+  "url": "https://arxiv.org/abs/2501.12948",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L08",
+  "title": "Kimi K2",
+  "url": "https://arxiv.org/abs/2507.20534",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L08",
+  "title": "OpenThoughts-Agent",
+  "url": "https://arxiv.org/abs/2606.24855",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L08",
+  "title": "SWE-Gym",
+  "url": "https://arxiv.org/abs/2412.21139",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L08",
+  "title": "Agent Data Protocol",
+  "url": "https://arxiv.org/abs/2510.24702",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L08",
+  "title": "BalanceSFT",
+  "url": "https://arxiv.org/abs/2505.20192",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L08",
+  "title": "Instruction Modelling",
+  "url": "https://arxiv.org/abs/2405.14394",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L08",
+  "title": "Weighted Instruction Tuning",
+  "url": "https://arxiv.org/abs/2507.07817",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L09",
+  "title": "ReST",
+  "url": "https://arxiv.org/abs/2308.08998",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L09",
+  "title": "ReST-EM",
+  "url": "https://arxiv.org/abs/2312.06585",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L09",
+  "title": "DeepSeekMath",
+  "url": "https://arxiv.org/abs/2402.03300",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L09",
+  "title": "DrGRPO",
+  "url": "https://arxiv.org/abs/2503.20783",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "BrowseComp",
+  "url": "https://arxiv.org/abs/2504.12516",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "DeepResearch Bench",
+  "url": "https://arxiv.org/abs/2506.11763",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "Tongyi DeepResearch",
+  "url": "https://arxiv.org/abs/2510.24701",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "DR Tulu",
+  "url": "https://arxiv.org/abs/2511.19399",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "AgentIR",
+  "url": "https://arxiv.org/abs/2603.04384",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "BrowseComp-Plus",
+  "url": "https://arxiv.org/abs/2508.06600",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "FinSearchComp",
+  "url": "https://arxiv.org/abs/2509.13160",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "MedBrowseComp",
+  "url": "https://arxiv.org/abs/2505.14963",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "ScholarSearch",
+  "url": "https://arxiv.org/abs/2506.13784",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "AutoResearchBench",
+  "url": "https://arxiv.org/abs/2604.25256",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "ResearchQA",
+  "url": "https://arxiv.org/abs/2509.00496",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "DeepResearch Bench II",
+  "url": "https://arxiv.org/abs/2601.08536",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "WebSailor-V2",
+  "url": "https://arxiv.org/abs/2509.13305",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "WebDancer",
+  "url": "https://arxiv.org/abs/2505.22648",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "Scaling Agents via Continual Pre-training",
+  "url": "https://arxiv.org/abs/2509.13310",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "Search-R1",
+  "url": "https://arxiv.org/abs/2503.09516",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L10",
+  "title": "DeepSeekMath",
+  "url": "https://arxiv.org/abs/2402.03300",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "InstructGPT",
+  "url": "https://arxiv.org/abs/2203.02155",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "Generalized Advantage Estimation (GAE)",
+  "url": "https://arxiv.org/abs/1506.02438",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "Let’s Verify Step by Step",
+  "url": "https://arxiv.org/abs/2305.20050",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "AReaL",
+  "url": "https://arxiv.org/abs/2505.24298",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "CTPO",
+  "url": "https://arxiv.org/abs/2605.07331",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "Proximal Policy Optimization (PPO)",
+  "url": "https://arxiv.org/abs/1707.06347",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "DeepSeekMath (GRPO)",
+  "url": "https://arxiv.org/abs/2402.03300",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "MiniMax-M1 (CISPO)",
+  "url": "https://arxiv.org/abs/2506.13585",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "Group Sequence Policy Optimization (GSPO)",
+  "url": "https://arxiv.org/abs/2507.18071",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "DAPO",
+  "url": "https://arxiv.org/abs/2503.14476",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "SABER (τ-bench audit)",
+  "url": "https://arxiv.org/abs/2512.07850",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "PostTrainBench",
+  "url": "https://arxiv.org/abs/2603.08640",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "Distilling the Knowledge in a Neural Network",
+  "url": "https://arxiv.org/abs/1503.02531",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "On-Policy Distillation of Language Models (GKD)",
+  "url": "https://arxiv.org/abs/2306.13649",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L11",
+  "title": "Self-Distilled Reasoner (OPSD)",
+  "url": "https://arxiv.org/abs/2601.18734",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L13",
+  "title": "AgentDojo",
+  "url": "https://arxiv.org/abs/2406.13352v3",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L13",
+  "title": "ToolEmu",
+  "url": "https://arxiv.org/abs/2309.15817v2",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L13",
+  "title": "Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition",
+  "url": "https://arxiv.org/abs/2507.20526",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L13",
+  "title": "Jailbreaking Black Box Large Language Models in Twenty Queries (PAIR)",
+  "url": "https://arxiv.org/abs/2310.08419",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L13",
+  "title": "AI Control: Improving Safety Despite Intentional Subversion",
+  "url": "https://arxiv.org/abs/2312.06942v5",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L13",
+  "title": "Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation",
+  "url": "https://arxiv.org/abs/2503.11926",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L13",
+  "title": "AgentHarm",
+  "url": "https://arxiv.org/abs/2410.09024",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L13",
+  "title": "OpenAgentSafety",
+  "url": "https://arxiv.org/abs/2507.06134v2",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L13",
+  "title": "Monitoring Monitorability",
+  "url": "https://arxiv.org/abs/2512.18311",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L14",
+  "title": "OpenHands Software Agent SDK report",
+  "url": "https://arxiv.org/abs/2511.03690v1",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L14",
+  "title": "HumanEval",
+  "url": "https://arxiv.org/abs/2107.03374",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L14",
+  "title": "SWE-bench",
+  "url": "https://arxiv.org/abs/2310.06770v1",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L14",
+  "title": "SWE-agent",
+  "url": "https://arxiv.org/abs/2405.15793",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L14",
+  "title": "CodeR",
+  "url": "https://arxiv.org/abs/2406.01304",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L14",
+  "title": "MetaGPT",
+  "url": "https://arxiv.org/abs/2308.00352",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L14",
+  "title": "OpenHands-Versa",
+  "url": "https://arxiv.org/abs/2506.03011v1",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L14",
+  "title": "Code with Me or for Me?",
+  "url": "https://arxiv.org/abs/2507.08149v1",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L15",
+  "title": "Hodoscope: Unsupervised Monitoring for AI Misbehaviors",
+  "url": "https://arxiv.org/abs/2604.11072",
+  "arxiv": "arXiv"
+ },
+ {
+  "lecture": "L15",
+  "title": "Multi-Agent Computer Use (MACU)",
+  "url": "https://arxiv.org/abs/2606.01533",
+  "arxiv": "arXiv"
+ }
+]

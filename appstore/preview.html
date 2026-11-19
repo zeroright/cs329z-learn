@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CS329Z iOS · 可交互预览</title>
+<style>
+:root{--bg:#eef1f7;--card:#fff;--text:#1a1d26;--muted:#5c6578;--brand:#2563eb;--brand2:#7c3aed;--ok:#059669;--warn:#d97706;--border:#e2e6ef}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;padding:24px;background:var(--bg);color:var(--text);font:15px/1.65 system-ui,-apple-system,PingFang SC,sans-serif;display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+.panel{width:390px}
+.phone{width:390px;height:820px;background:#0a0a0a;border-radius:54px;padding:12px;box-shadow:0 24px 60px rgba(15,23,42,.3)}
+.screen{height:100%;border-radius:44px;overflow:hidden;background:var(--card);display:flex;flex-direction:column;position:relative}
+.status{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:12px;font-weight:700;flex:none}
+.batt{width:22px;height:11px;border:1.5px solid var(--text);border-radius:3px;position:relative;display:inline-block}
+.batt::after{content:'';position:absolute;right:-4px;top:3px;width:2px;height:5px;background:var(--text)}
+.topbar{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.92);flex:none}
+.brand{font-weight:800;font-size:15px}.brand span{color:var(--brand2)}
+.iconbtn{font-size:17px;color:var(--muted);background:none;border:none;cursor:pointer;padding:4px}
+.body{flex:1;overflow:auto;padding:14px 16px 90px;position:relative}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 4px 14px rgba(16,24,40,.04)}
+.hero{border:1px solid var(--border);border-radius:16px;padding:16px;margin-bottom:14px;background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(124,58,237,.1))}
+.hero .eyebrow{font-size:10px;font-weight:800;color:var(--brand);letter-spacing:.08em;text-transform:uppercase}
+.hero h2{margin:6px 0 4px;font-size:19px;line-height:1.3}
+.hero p{margin:0;color:var(--muted);font-size:12.5px}
+.row{display:flex;gap:10px;align-items:center}.between{justify-content:space-between}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:700;background:#eef2ff;color:#3730a3}
+.pill.ok{background:#d1fae5;color:#065f46}.pill.warn{background:#fef3c7;color:#92400e}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 14px;border-radius:12px;font-weight:700;font-size:13.5px;border:none;cursor:pointer;transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.btn.primary{background:var(--brand);color:#fff}.btn.ghost{background:var(--card);color:var(--brand);border:1px solid var(--border)}
+.btn.sm{padding:7px 12px;font-size:12.5px}
+.list{list-style:none;margin:0;padding:0}
+.list li{padding:11px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:13.5px}
+.list li:last-child{border:none}
+.muted{color:var(--muted);font-size:12px}
+.bar{height:8px;border-radius:999px;background:var(--border);overflow:hidden;flex:1}
+.bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));transition:width .3s}
+.tabbar{position:absolute;left:0;right:0;bottom:0;height:62px;border-top:1px solid var(--border);display:flex;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);z-index:5}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:10.5px;color:var(--muted);cursor:pointer}
+.tab .ico{font-size:20px}.tab.cur{color:var(--brand);font-weight:700}
+.home-ind{position:absolute;bottom:4px;left:50%;transform:translateX(-50%);height:4px;width:120px;border-radius:999px;background:#000;z-index:6}
+.fab{position:absolute;right:18px;bottom:84px;width:52px;height:52px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(37,99,235,.4);border:none;cursor:pointer;z-index:8;transition:transform .15s}
+.fab:hover{transform:translateY(-2px)}
+.sheet-mask{position:absolute;inset:0;background:rgba(10,15,30,.5);z-index:20;display:flex;align-items:center;justify-content:center;padding:12px}
+.sheet{width:100%;height:88%;background:var(--card);border-radius:18px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.sheet-top{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--border);flex:none}
+.sheet-body{flex:1;overflow:auto;padding:16px}
+.steps{display:flex;justify-content:center;gap:6px;margin-bottom:14px;font-size:10.5px;flex-wrap:wrap}
+.step{padding:5px 10px;border-radius:999px;background:#eef2ff;color:#3730a3;font-weight:700}
+.step.cur{background:var(--brand);color:#fff}.step.done{background:#d1fae5;color:#065f46}
+.scene{border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px;display:flex;flex-direction:column;min-height:280px}
+.scene-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:10px}
+.scene-type{font-size:11px;font-weight:800;color:var(--brand);background:rgba(37,99,235,.1);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.scene-title{font-size:15px;font-weight:800;text-align:right}
+.scene-body{font-size:13.5px;line-height:1.75;margin:0 0 12px;flex:1}
+.choice{display:block;width:100%;padding:11px 12px;border:1.5px solid var(--border);border-radius:12px;background:var(--card);text-align:left;font-size:13px;margin-bottom:8px;cursor:pointer;transition:all .15s}
+.choice.picked{border-color:var(--brand);background:rgba(37,99,235,.08);outline:2px solid var(--brand)}
+.answer{margin:8px 0 0;padding:10px 12px;background:rgba(16,185,129,.08);border-left:4px solid var(--ok);border-radius:10px;font-size:12.5px}
+.textarea{width:100%;min-height:64px;padding:10px;border:1px solid var(--border);border-radius:10px;font:inherit;font-size:13px;resize:none;margin-top:auto}
+.sheet-foot{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-top:1px solid var(--border);flex:none}
+.kp{display:flex;gap:8px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
+.kp:last-child{border:none}
+.dot{width:10px;height:10px;border-radius:999px;margin-top:4px;flex:none}
+.kp-btns{display:flex;gap:4px;flex:none;margin-left:auto}
+.kp-btns button{width:24px;height:24px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;font-size:11px}
+.kp-btns button.sel{background:var(--brand);color:#fff;border-color:var(--brand)}
+details{border-top:1px dashed var(--border);padding-top:10px;margin-top:4px}
+summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--muted);text-align:center;list-style:none}
+summary::-webkit-details-marker{display:none}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 4px;text-align:center}
+.stat .n{font-size:19px;font-weight:800}.stat .l{font-size:10px;color:var(--muted)}
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl td{padding:9px 4px;border-bottom:1px solid var(--border);vertical-align:middle}
+.tbl td:first-child{font-weight:800;white-space:nowrap}
+.lec-item{display:flex;gap:8px;align-items:center;padding:10px;border-radius:10px;cursor:pointer;font-size:13px;margin-bottom:4px}
+.lec-item.cur{background:#eef2ff;font-weight:700}
+.lec-code{font-weight:800;min-width:38px}
+.toc{position:absolute;left:0;top:52px;bottom:62px;width:230px;background:var(--card);border-right:1px solid var(--border);transform:translateX(-100%);transition:transform .25s;z-index:10;overflow:auto;padding:12px}
+.toc.open{transform:none}
+.toc a{display:block;padding:8px 10px;border-radius:8px;color:var(--text);text-decoration:none;font-size:13px;margin-bottom:2px}
+.toc a.cur{background:#eef2ff;font-weight:700}
+.slide{border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-bottom:10px}
+.slide-fake{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--muted);background:linear-gradient(135deg,#dbeafe,#ede9fe)}
+.credit{font-size:10px;color:var(--muted);margin-top:4px}
+.qcard{border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:12px}
+.qcard h4{margin:0 0 10px;font-size:14px}
+.tag{font-size:10.5px;padding:2px 8px;border-radius:6px;background:#f1f5f9;color:#475569;font-weight:700}
+.toast{position:absolute;left:50%;bottom:80px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:8px 14px;border-radius:999px;font-size:12px;opacity:0;transition:opacity .3s;z-index:30;pointer-events:none}
+.toast.show{opacity:1}
+.week{border-left:3px solid var(--brand);padding:6px 0 6px 14px;margin:14px 0}
+.week b{font-size:14px}.week .goal{font-size:13px;margin:2px 0}.week .del{font-size:11.5px;color:var(--muted)}
+.footer-note{width:390px;text-align:center;margin-top:10px;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="panel">
+<div class="phone"><div class="screen">
+  <div class="status"><span>9:41</span><span>CS329Z · iOS Preview</span><span>📶 🔋 <span class="batt"></span></span></div>
+  <div class="topbar"><button class="iconbtn" id="menuBtn">☰</button><div class="brand">CS329Z <span>自学站</span></div><button class="iconbtn" id="themeBtn">◐</button></div>
+
+  <div class="toc" id="toc"></div>
+
+  <div class="body" id="view"></div>
+
+  <button class="fab" id="fab" title="互动课堂">🎓</button>
+
+  <div class="tabbar">
+    <div class="tab cur" data-v="home"><span class="ico">⌂</span>首页</div>
+    <div class="tab" data-v="catalog"><span class="ico">⌗</span>目录</div>
+    <div class="tab" data-v="class"><span class="ico">🎓</span>课堂</div>
+    <div class="tab" data-v="mastery"><span class="ico">📊</span>掌握度</div>
+    <div class="tab" data-v="plan"><span class="ico">🗓</span>路径</div>
+  </div>
+  <div class="home-ind"></div>
+  <div class="toast" id="toast"></div>
+</div></div>
+<p class="footer-note">可交互预览 · 数据存本机 localStorage · 点击底部 tab / 🎓 / 讲次 / 选项 / 打分均真实响应</p>
+</div>
+
+<script>
+const LECS=[
+ ['L01','课程导论：什么是 Agent','建立 Agent 的坐标系','2025-08-25',true],
+ ['L02','Agent 能力 1：工具使用','把 token 变成动作','2025-08-27',true],
+ ['L03','Agent 能力 2：长上下文管理','管理长上下文','2025-09-01',true],
+ ['L04','Agent 能力 3：技能与记忆','设计技能与记忆','2025-09-03',true],
+ ['L05','Agent 能力 4：规划与多 Agent 协同','拆解规划与多 Agent','2025-09-08',true],
+ ['L06','领域 1：编程 Agent','理解 Coding Agent 循环','2025-09-10',true],
+ ['L07','领域 2：Computer Use Agent','评估 Computer Use','2025-09-15',true],
+ ['L08','训练 1：监督微调 SFT','理解 SFT 作用','2025-09-17',true],
+ ['L09','训练 2：强化学习基础','建立 RL 最低词汇','2025-09-22',true],
+ ['L10','领域 3：深度研究 Agent','构建 Deep Research 流程','2025-09-24',true],
+ ['L11','训练 3：高级 RL 算法','读懂高级 RL','2025-09-29',true],
+ ['L12','训练 4：RL 系统','理解 RL 系统开销','2025-10-01',true],
+ ['L13','安全 1：Agent 安全','识别失效模式','2025-10-06',true],
+ ['L14','框架 1：OpenHands','拆解工程结构','2025-10-08',true],
+ ['L15','框架 2：编排与监控','上线与运营','2025-10-13',false]
+];
+const KPS={
+ L01:[['agent-def','sense–act 回路 / 四要素','concept'],['tool-token','动作即 token','mechanism']],
+ L02:[['tool-desc','工具描述/schema 设计','system'],['extend','extend vs facilitate','concept']],
+ L03:[['ctx','压缩 / ReSum / KV 复用','mechanism'],['lost','lost-in-the-middle','concept']],
+ L04:[['mem','memory/skill 分层','system'],['asi','Agent Skill Induction','mechanism']],
+ L05:[['plan','ReAct vs P&E','mechanism'],['multi','多 agent 接口','system']],
+ L06:[['swe','locate→edit→test→iterate','mechanism'],['eval','SWE-bench 验证','concept']],
+ L07:[['ground','DOM/截图/VNC grounding','mechanism'],['safe','GUI 安全接入','safety']],
+ L08:[['sft','演示轨迹 + rejection sampling','mechanism']],
+ L09:[['rl','state/action/reward','concept'],['grpo','GRPO 组内优势','mechanism']],
+ L10:[['dr','deep research 流水线','system'],['cite','citation fidelity','concept']],
+ L11:[['algo','PPO/GRPO/DPO 取舍','mechanism'],['sparse','稀疏奖励','concept']],
+ L12:[['sys','disaggregated rollout/train','system']],
+ L13:[['sand','sandbox/凭证/监控/guardrail','safety']],
+ L14:[['oh','OpenHands 部件拆解','system']],
+ L15:[['orch','编排/状态/重试','system'],['slo','成功率/延迟/成本/介入率','system']]
+};
+const SCENES={
+ L01:[
+  {t:'explain',title:'先建立坐标系',body:'别急着看定义。先回答：一个“订外卖”的动作流，传感器是什么、执行器是什么？'},
+  {t:'probe',title:'删邮件事故复盘',body:'如果硬约束被压缩进 summary 就丢，harness 层该怎么兜底？想 2 条不同层面的修复。'},
+  {t:'decision',title:'自主边界投票',body:'六个任务你各选「完全自主/先问再做/永远别碰」，分歧点在可逆性/可验证性/爆炸半径。',opts:['完全自主','先问再做','永远别碰'],ans:'分歧不在难度，在可逆性/可验证性/爆炸半径。'},
+  {t:'recall',title:'一句话带走',body:'Agent 是系统不是模型。写出你自己的一句话定义，包含 harness。'}
+ ],
+ L02:[
+  {t:'explain',title:'动作即 token',body:'tool call 是模型生成的文本，harness 才是执行者。'},
+  {t:'probe',title:'工具值不值得加',body:'它是「提供新能力」还是「已有能力做更快更稳」？给 3 个你常用工具分类。'},
+  {t:'build',title:'设计 read_file 工具',body:'写出 name/description/parameters schema，并写 2 种失败返回格式。'},
+  {t:'recall',title:'一句话带走',body:'工具描述的质量 = 调用质量的上限。'}
+ ],
+ L03:[
+  {t:'explain',title:'长上下文三条路',body:'无损压缩 / ReSum / KV cache 复用，分别解决装不下、记不住、算得慢。'},
+  {t:'probe',title:'lost-in-the-middle',body:'为什么把硬约束放中间容易丢？对你的 harness 设计意味着什么？'},
+  {t:'decision',title:'压缩策略选型',body:'1 小时调试任务：近 8 轮 raw + 约束 pin + 滚动摘要，为什么比全保留/全摘要更稳？',opts:['全保留','全摘要','分层保留'],ans:'分层保留：事实可压，约束必须原样保留。'},
+  {t:'recall',title:'一句话带走',body:'上下文管理的本质是分层记忆，不是无限窗口。'}
+ ]
+};
+// fallback for other lectures
+LECS.forEach(([id])=>{if(!SCENES[id])SCENES[id]=[
+ {t:'explain',title:'本讲导入',body:'先用 60 秒说出：这一讲解决什么问题、和上一讲的边界在哪。'},
+ {t:'probe',title:'关键追问',body:'挑出本讲你最不确定的一个机制，写出它失效时的表现。'},
+ {t:'build',title:'动手产出',body:'基于本讲内容，给你的真实任务写一个可检查的交付物（图/清单/schema）。'},
+ {t:'recall',title:'一句话带走',body:'用一句话总结本讲，贴到 Notion 复习。'}
+ ];});
+
+const KEY='preview_CS329Z';
+const store=(()=>{try{return JSON.parse(localStorage.getItem(KEY))||{};}catch(e){return{}}})();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}};
+store.done=store.done||{L01:true};store.mastery=store.mastery||{};store.notes=store.notes||{};
+let cur='L01',view='home',sceneIdx=0;
+
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1600);};
+const LEVELS=['未接触','了解','理解','会用','能讲清'];
+const COLORS=['#94a3b8','#f59e0b','#3b82f6','#10b981','#8b5cf6'];
+const kps=lec=>KPS[lec]||KPS.L01;
+const mlevel=id=>store.mastery[id]||0;
+const rated=()=>Object.values(store.mastery).filter(v=>v>0).length;
+const mastered=()=>Object.values(store.mastery).filter(v=>v>=3).length;
+const weak=()=>{const arr=[];LECS.forEach(([id])=>kps(id).forEach(([kid,label])=>{if(mlevel(kid)<2)arr.push({lec:id,kid,label});}));return arr.slice(0,6);};
+
+function render(){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('cur',t.dataset.v===view));
+  const v=$('#view');
+  if(view==='home')v.innerHTML=home();
+  else if(view==='catalog')v.innerHTML=catalog();
+  else if(view==='class')v.innerHTML='';openClassSheet(cur);
+  else if(view==='mastery')v.innerHTML=mastery();
+  else if(view==='plan')v.innerHTML=plan();
+  $('#fab').style.display=(view==='lecture')?'flex':'none';
+}
+
+function home(){
+  const todo=LECS.find(([id])=>!store.done[id]);
+  return `<div class="hero"><span class="eyebrow">LEARNING PATH</span><h2>按目标学习，<br>带着结果进入下一阶段。</h2><p>先选择路线，再完成每阶段的阅读、实验和验收。</p></div>
+  <div class="card"><div class="row between"><div><b style="font-size:14px">继续学习</b><div class="muted">${todo?todo[0]+' · '+todo[1]:'全部完成'}</div></div><span class="pill ${todo?'warn':'ok'}">${todo?'待学习':'已读完'}</span></div>
+  <div class="row" style="margin-top:10px"><div class="bar"><span style="width:${LECS.filter(l=>store.done[l[0]]).length/15*100}%"></span></div><span class="muted">${LECS.filter(l=>store.done[l[0]]).length}/15</span></div>
+  <div class="row" style="margin-top:10px"><button class="btn primary" style="flex:1" onclick="goLecture('${todo?todo[0]:'L01'}')">进入 ${todo?todo[0]:'L01'} →</button><button class="btn ghost" onclick="switchView('mastery')">看掌握度</button></div></div>
+  <div class="card"><h3 style="margin:0 0 8px;font-size:14px">本周节奏</h3>${['L01','L02','L03'].map(id=>{const l=LECS.find(x=>x[0]===id);return `<div class="row between" style="padding:9px 0;border-bottom:1px solid var(--border)"><span><b>${id}</b> ${l[1]}</span><span class="pill ${store.done[id]?'ok':'warn'}">${store.done[id]?'已读':'进行中'}</span></div>`;}).join('')}</div>`;
+}
+
+function catalog(){
+  return `<div class="hero"><span class="eyebrow">COURSE CATALOG</span><h2 style="font-size:18px">全部讲次与资料</h2><p style="font-size:12px">15 讲讲义 · 14 讲录像 · 3 次作业</p></div>
+  <div class="card" style="padding:0">${LECS.map(l=>`<div class="lec-item ${l[0]===cur?'cur':''}" onclick="goLecture('${l[0]}')"><span class="lec-code">${l[0]}</span><div style="flex:1"><div>${l[1]}</div><div class="muted">${l[2]}</div></div><span class="pill ${store.done[l[0]]?'ok':l[4]?'warn':''}">${store.done[l[0]]?'已读':l[4]?'录像':'补读'}</span></div>`).join('')}</div>`;
+}
+
+function lecture(id){
+  cur=id;const l=LECS.find(x=>x[0]===id);
+  return `<div class="muted" style="font-size:12px">首页 / 学习路径 / ${id}</div>
+  <h2 style="margin:8px 0 4px;font-size:19px">${id} · ${l[1]}</h2>
+  <div class="muted" style="font-size:12px">${l[2]} · ${l[3]}${l[4]?' · 视频教案 · YT':' · Slides 补读'}</div>
+  <div class="row" style="margin:10px 0;gap:8px"><span class="pill">官方</span><span class="pill ${store.done[id]?'ok':'warn'}" onclick="toggleDone('${id}')">${store.done[id]?'已读 · 点击取消':'标记已读'}</span></div>
+  <div class="slide"><div class="slide-fake">Slide · ${l[1]}</div><p class="credit">CS329Z 课程幻灯 · 版权归原作者</p></div>
+  <div class="card"><h3 style="font-size:14px">本讲速览</h3><ul class="list" style="font-size:12.5px">${(KPS[id]||[]).map(k=>`<li>${k[1]}</li>`).join('')||'<li>待补充</li>'}</ul></div>
+  <div class="card"><h3 style="font-size:14px">正文讲解</h3><p style="font-size:13px;margin:0">${l[2]}。配合互动课堂把概念变成可操作的设计决策。</p></div>
+  <div class="card"><h3 style="font-size:14px">本讲知识点自评</h3>${kps(id).map(([kid,label])=>{const m=mlevel(kid);return `<div class="kp"><span class="dot" style="background:${COLORS[m]}"></span><div><b style="font-size:13px">${label}</b><div class="kp-btns">${LEVELS.map((lv,i)=>`<button class="${m===i?'sel':''}" onclick="setM('${kid}',${i})" title="${lv}">${i===0?'–':i}</button>`).join('')}</div></div></div>`;}).join('')}</div>`;
+}
+
+function mastery(){
+  const due=weak().slice(0,3);
+  return `<div class="hero"><span class="eyebrow">MASTERY</span><h2 style="font-size:18px">把「读过」变成「会用」</h2><p style="font-size:12px">自评 + 间隔复习 + 弱点清单</p></div>
+  <div class="grid4">
+    <div class="stat"><div class="n">${rated()}</div><div class="l">已自评</div></div>
+    <div class="stat"><div class="n">${mastered()}</div><div class="l">≥会用</div></div>
+    <div class="stat"><div class="n">${due.length}</div><div class="l">待复习</div></div>
+    <div class="stat"><div class="n">${weak().length}</div><div class="l">待补强</div></div>
+  </div>
+  <div class="card"><h3 style="font-size:14px">各讲掌握度</h3><table class="tbl">${LECS.map(l=>{const ks=kps(l[0]);const avg=ks.reduce((a,k)=>a+mlevel(k[0]),0)/Math.max(1,ks.length);const lv=Math.round(avg);return `<tr><td onclick="goLecture('${l[0]}')" style="cursor:pointer">${l[0]}</td><td>${l[1]}</td><td><div class="bar"><span style="width:${avg/4*100}%"></span></div></td><td><span class="pill p${lv}">${LEVELS[lv]}</span></td></tr>`;}).join('')}</table></div>
+  <div class="card"><h3 style="font-size:14px">待补强知识点</h3>${weak().map(w=>`<div class="kp"><span class="dot" style="background:${COLORS[mlevel(w.kid)]}"></span><div><b style="font-size:13px" onclick="goLecture('${w.lec}')" style="cursor:pointer">${w.lec} · ${w.label}</b><small class="muted">${LEVELS[mlevel(w.kid)]}</small></div></div>`).join('')||'<p class="muted">暂无，继续保持。</p>'}</div>`;
+}
+
+function plan(){
+  const weeks=[['第 1 周','L01–L03','建立坐标系：定义、tool call、上下文','四要素图 + 工具 schema'],['第 2 周','L04–L06','记忆/技能/规划 + coding 闭环','skill 库草案 + locate-edit-test trace'],['第 3 周','L07–L09','GUI 安全 + SFT + RL 词汇','CUA 接入清单 + 演示轨迹'],['第 4 周','L10–L12','深度研究 + 高级 RL + 系统开销','DR 流水线图 + rollout/train'],['第 5 周','L13–L15','安全 + OpenHands + 上线','上线前 checklist + SLO'],['第 6 周','综合项目','选 harness 或训练','可演示项目 + 复盘']];
+  return `<div class="hero"><span class="eyebrow">6-WEEK PLAN</span><h2 style="font-size:18px">推荐 6 周节奏</h2><p style="font-size:12px">按阶段验收，不是按天数打卡</p></div>
+  ${weeks.map((w,i)=>`<div class="week"><b>${w[0]} · ${w[1]}</b><div class="goal">${w[2]}</div><div class="del">交付物：${w[3]}</div></div>`).join('')}`;
+}
+
+function openClassSheet(lec){
+  const mask=document.createElement('div');mask.className='sheet-mask';mask.innerHTML=`<div class="sheet"><div class="sheet-top"><div><b>${lec} 互动课堂</b><div class="muted" style="font-size:11px">讲→问→做→回忆 · 只存本机</div></div><button class="iconbtn" onclick="closeSheet(this)" style="font-size:20px">✕</button></div><div class="sheet-body" id="csBody"></div><div class="sheet-foot"><span class="muted" style="font-size:12px;font-weight:700" id="csProg"></span><div class="row" style="gap:8px"><button class="btn ghost sm" id="csPrev">← 上一幕</button><button class="btn primary sm" id="csNext">下一幕 →</button></div></div></div>`;
+  document.querySelector('.screen').appendChild(mask);
+  let i=0;const sc=SCENES[lec]||SCENES.L01;
+  const STEPS=['讲 · Explain','问 · Probe','做 · Apply','回忆 · Recall'];
+  function draw(){
+    const b=mask.querySelector('#csBody'),s=sc[i];
+    b.innerHTML=`<div class="steps">${STEPS.map((l,k)=>`<span class="step ${k===Math.min(i,3)?'cur':k<Math.min(i,3)?'done':''}">${l}</span>`).join('')}</div>
+    <div class="scene"><div class="scene-hd"><span class="scene-type">${{explain:'📖 讲解',probe:'🧠 追问',decision:'⚖️ 决策',build:'🛠 动手',recall:'✅ 回忆'}[s.t]} · ${i+1}/${sc.length}</span><span class="scene-title">${s.title}</span></div>
+    <p class="scene-body">${s.body}</p>
+    ${s.opts?`<div>${s.opts.map(o=>`<button class="choice" data-o="${esc(o)}">${o}</button>`).join('')}</div><div class="answer" hidden>${s.ans||''}</div>`:''}
+    <textarea class="textarea" placeholder="写下你的答案 / 思考（只存本机）">${store.notes[`${lec}:${i}`]||''}</textarea>
+    </div>
+    <details><summary>▾ 本讲知识点自评（${kps(lec).length} 个）</summary>${kps(lec).map(([kid,label])=>{const m=mlevel(kid);return `<div class="kp"><span class="dot" style="background:${COLORS[m]}"></span><div><b style="font-size:13px">${label}</b></div><div class="kp-btns">${LEVELS.map((lv,x)=>`<button class="${m===x?'sel':''}" onclick="setM('${kid}',${x},1)">${x===0?'–':x}</button>`).join('')}</div></div>`;}).join('')}</details>`;
+    b.querySelectorAll('.choice').forEach(c=>c.onclick=()=>{c.classList.add('picked');b.querySelector('.answer').hidden=false;});
+    const ta=b.querySelector('.textarea');ta.oninput=()=>{store.notes[`${lec}:${i}`]=ta.value;save();};
+    mask.querySelector('#csProg').textContent=`第 ${i+1} / ${sc.length} 幕`;
+    mask.querySelector('#csPrev').disabled=(i===0);mask.querySelector('#csNext').textContent=(i===sc.length-1?'完成本讲':'下一幕 →');
+    mask.querySelector('#csPrev').onclick=()=>{i=Math.max(0,i-1);draw();};
+    mask.querySelector('#csNext').onclick=()=>{if(i===sc.length-1){closeSheet(mask.querySelector('.iconbtn'));toast('本讲课堂完成');}else{i++;draw();}};
+  }
+  draw();
+}
+window.closeSheet=el=>{el.closest('.sheet-mask').remove();render();};
+window.goLecture=id=>{cur=id;view='lecture';render();$('#view').innerHTML=lecture(id);};
+window.switchView=v=>{view=v;render();};
+window.toggleDone=id=>{store.done[id]=!store.done[id];save();render();if(view==='lecture')$('#view').innerHTML=lecture(id);toast(store.done[id]?'已标记阅读':'已取消');};
+window.setM=(kid,lv,keep)=>{store.mastery[kid]=lv;save();if(view==='mastery')render();else if(!keep&&view==='lecture')$('#view').innerHTML=lecture(cur);toast('已评分 '+LEVELS[lv]);};
+
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{view=t.dataset.v;sceneIdx=0;render();});
+$('#fab').onclick=()=>openClassSheet(cur);
+$('#menuBtn').onclick=()=>{const t=$('#toc');t.classList.toggle('open');if(t.classList.contains('open')&&!t.innerHTML)t.innerHTML='<b style="font-size:12px;color:var(--muted)">讲次</b>'+LECS.map(l=>`<a class="${l[0]===cur?'cur':''}" onclick="goLecture('${l[0]}');document.getElementById('toc').classList.remove('open')">${l[0]} · ${l[1]}</a>`).join('');};
+$('#themeBtn').onclick=()=>{const d=document.documentElement;d.dataset.theme=d.dataset.theme==='dark'?'light':'dark';toast('已切换主题');};
+document.addEventListener('click',e=>{const t=$('#toc');if(t.classList.contains('open')&&!t.contains(e.target)&&e.target!==$('#menuBtn'))t.classList.remove('open');});
+render();
+</script>
+</body></html>

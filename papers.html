@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>论文库 · CS329Z 自学站</title>
+<link rel="stylesheet" href="vendor/katex/katex.min.css"/>
+<link rel="stylesheet" href="css/site.css"/>
+<script src="vendor/marked.min.js"></script>
+<script defer src="vendor/katex/katex.min.js"></script>
+<script defer src="vendor/katex/auto-render.min.js"></script>
+<script defer src="vendor/mermaid.min.js"></script>
+<script src="js/site-shell.js"></script>
+<script src="js/app.js"></script>
+<script src="js/render.md.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/flashcards.js"></script>
+<script src="js/graph.js"></script>
+<script src="data/meta.js"></script>
+<script src="data/quizzes.js"></script>
+<script src="data/flashcards.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  if(window.mermaid) mermaid.initialize({startOnLoad:false, theme: document.documentElement.getAttribute('data-theme')==='dark'?'dark':'default'});
+});
+</script>
+<link rel="stylesheet" href="css/learning.css"/>
+<script src="data/learning.js"></script>
+<script defer src="js/learning.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#mainContent">跳到主要内容</a>
+<header class="topbar"></header>
+
+<div class="layout"><main class="main" id="mainContent">
+<h1>论文库</h1>
+<p class="muted">筛选官方精读论文；可按讲次/主题过滤。每条含 arXiv/原文链接与跳转到教案精读。</p>
+<div class="toolbar">
+  <label>讲次 <select id="fLecture"><option value="">全部</option></select></label>
+  <label>关键词 <input id="fTopic" placeholder="如 MemGPT / GRPO"/></label>
+</div>
+<table class="table" id="paperTable"><thead><tr><th>论文</th><th>讲次</th><th>主题</th><th>链接</th><th>精读</th></tr></thead><tbody></tbody></table>
+</main></div>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const sel=document.getElementById('fLecture');
+  SITE_META.order.forEach(id=>{const o=document.createElement('option');o.value=id;o.textContent=id;sel.appendChild(o);});
+  function render(){
+    const L=sel.value, q=document.getElementById('fTopic').value.trim().toLowerCase();
+    const rows=(SITE_META.papers||[]).filter(p=>{
+      if(L && p.lecture!==L) return false;
+      if(!q) return true;
+      const hay=(p.title+' '+(p.topics||[]).join(' ')+' '+p.lecture).toLowerCase();
+      return hay.includes(q);
+    });
+    document.querySelector('#paperTable tbody').innerHTML=rows.map(p=>{
+      const href=`lectures/${p.lecture}.html${p.anchor?('#'+p.anchor):''}`;
+      const bits=[];
+      if(p.url) bits.push(`<a href="${p.url}" target="_blank" rel="noopener">${p.arxiv||'链接'}</a>`);
+      if(p.notion) bits.push(`<a href="${p.notion}" target="_blank" rel="noopener">Notion</a>`);
+      return `<tr>
+      <td>${p.title}${p.note?(' · '+p.note):''}</td>
+      <td>${p.lecture}</td>
+      <td>${(p.topics||[]).join(', ')}</td>
+      <td>${bits.join(' · ')||'—'}</td>
+      <td>${p.deep?'<a href="${p.deep}">深度精读</a> · ':''}<a href="${href}">讲次页</a></td></tr>`;
+    }).join('') || '<tr><td colspan="5">无匹配</td></tr>';
+  }
+  const preset=new URLSearchParams(location.search).get('lecture');
+  if(preset) sel.value=preset;
+  sel.onchange=render; document.getElementById('fTopic').oninput=render; render();
+});
+</script>
+
+
+</body></html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>代码游乐场 · CS329Z 自学站</title>
+<link rel="stylesheet" href="vendor/katex/katex.min.css"/>
+<link rel="stylesheet" href="css/site.css"/>
+<script src="vendor/marked.min.js"></script>
+<script defer src="vendor/katex/katex.min.js"></script>
+<script defer src="vendor/katex/auto-render.min.js"></script>
+<script defer src="vendor/mermaid.min.js"></script>
+<script src="js/site-shell.js"></script>
+<script src="js/app.js"></script>
+<script src="js/render.md.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/flashcards.js"></script>
+<script src="js/graph.js"></script>
+<script src="data/meta.js"></script>
+<script src="data/quizzes.js"></script>
+<script src="data/flashcards.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  if(window.mermaid) mermaid.initialize({startOnLoad:false, theme: document.documentElement.getAttribute('data-theme')==='dark'?'dark':'default'});
+});
+</script>
+<link rel="stylesheet" href="css/learning.css"/>
+<script src="data/learning.js"></script>
+<script defer src="js/learning.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#mainContent">跳到主要内容</a>
+<header class="topbar"></header>
+
+<div class="layout"><main class="main" id="mainContent">
+<h1>代码游乐场 <span class="badge self">自编示例</span></h1>
+<p class="muted">浏览器内 Pyodide 运行（无需付费 API）。建议用 <code>python -m http.server</code> 打开本站以便加载 CDN；file:// 下部分浏览器会拦截。</p>
+<div class="toolbar">
+  <label>示例 <select id="exSel"></select></label>
+  <button class="btn" id="runBtn">运行</button>
+  <button class="btn secondary" id="resetBtn">重置</button>
+  <span class="muted" id="pyStatus">未加载</span>
+</div>
+<label class="editor-label" for="code">Python 示例代码（可编辑）</label>
+<textarea id="code" style="width:100%;min-height:320px;font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--code-bg);color:var(--code-fg);border-radius:12px;border:1px solid var(--border);padding:12px"></textarea>
+<h2>运行输出</h2>
+<pre id="out" class="codebox" style="min-height:140px"></pre>
+</main></div>
+<script src="data/codes.js"></script>
+<script src="js/playground.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const sel=document.getElementById('exSel');
+  const codeEl=document.getElementById('code');
+  const examples=(SITE_META.examples&&SITE_META.examples.length)?SITE_META.examples:Object.keys(window.EXAMPLE_CODES||{}).map(file=>({file,title:file.replace(/\.py$/,'').replace(/_/g,' ')}));
+  examples.forEach(ex=>{const o=document.createElement('option');o.value=ex.file;o.textContent=ex.title+' ('+ex.file+')';sel.appendChild(o);});
+  const params=new URLSearchParams(location.search); const initial=params.get('ex')||'pass_at_k.py';
+  if([...sel.options].some(o=>o.value===initial)) sel.value=initial;
+  function load(){codeEl.value=EXAMPLE_CODES[sel.value]||'';}
+  sel.onchange=load; load();
+  document.getElementById('resetBtn').onclick=load;
+  document.getElementById('runBtn').onclick=()=>Playground.runPython(codeEl.value, document.getElementById('out'), document.getElementById('pyStatus'));
+});
+</script>
+
+
+</body></html>

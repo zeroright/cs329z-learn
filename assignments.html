@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>综合项目 · CS329Z 自学站</title>
+<link rel="stylesheet" href="vendor/katex/katex.min.css"/>
+<link rel="stylesheet" href="css/site.css"/>
+<script src="vendor/marked.min.js"></script>
+<script src="js/site-shell.js"></script>
+<script src="js/app.js"></script>
+<script src="js/render.md.js"></script>
+<script src="data/meta.js"></script>
+<script src="data/capstones_md.js"></script>
+<link rel="stylesheet" href="css/learning.css"/>
+</head>
+<body>
+<a class="skip-link" href="#mainContent">跳到主要内容</a>
+<header class="topbar"></header>
+<div class="layout">
+<main class="main" id="mainContent">
+<section class="hero"><span class="eyebrow">CAPSTONE PROJECTS</span><h1>综合项目模板</h1><p>把 20 讲的知识整合成一个可交付的 Agent 项目。以下方向供自学参考，可自由裁剪。</p></section>
+<section class="section"><div class="body content" id="capBody"></div></section>
+</main></div>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const el=document.getElementById('capBody');
+  if(window.marked && window.CAPSTONES_MD){marked.setOptions({gfm:true});el.innerHTML=marked.parse(window.CAPSTONES_MD);}else{el.textContent=window.CAPSTONES_MD||'';}
+});
+</script>
+</body></html>

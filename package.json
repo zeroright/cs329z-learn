@@ -1,0 +1,30 @@
+{
+  "name": "cs329z-learn",
+  "version": "1.0.0",
+  "description": "**在线访问**：<https://zeroright.github.io/cs329z-learn/>",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeroright/cs329z-learn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/zeroright/cs329z-learn/issues"
+  },
+  "homepage": "https://github.com/zeroright/cs329z-learn#readme",
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.2",
+    "@capacitor/core": "^8.6.2",
+    "@capacitor/ios": "^8.6.2"
+  }
+}

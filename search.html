@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>全文搜索 · CS329Z 自学站</title>
+<link rel="stylesheet" href="vendor/katex/katex.min.css"/>
+<link rel="stylesheet" href="css/site.css"/>
+<script src="vendor/marked.min.js"></script>
+<script defer src="vendor/katex/katex.min.js"></script>
+<script defer src="vendor/katex/auto-render.min.js"></script>
+<script defer src="vendor/mermaid.min.js"></script>
+<script src="js/site-shell.js"></script>
+<script src="js/app.js"></script>
+<script src="js/render.md.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/flashcards.js"></script>
+<script src="js/graph.js"></script>
+<script src="data/meta.js"></script>
+<script src="data/quizzes.js"></script>
+<script src="data/flashcards.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  if(window.mermaid) mermaid.initialize({startOnLoad:false, theme: document.documentElement.getAttribute('data-theme')==='dark'?'dark':'default'});
+});
+</script>
+<link rel="stylesheet" href="css/learning.css"/>
+<script src="data/learning.js"></script>
+<script defer src="js/learning.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#mainContent">跳到主要内容</a>
+<header class="topbar"></header>
+
+<div class="layout"><main class="main" id="mainContent">
+<h1>全文搜索</h1>
+<label for="q">搜索课程正文、术语与论文关键词</label>
+<input id="q" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:var(--bg2);color:var(--text)" placeholder="输入关键词，如 GRPO、MemGPT、pass@k"/>
+<div id="results" style="margin-top:16px"></div>
+</main></div>
+<script src="data/search_index.js"></script>
+<script>
+function search(q){
+  q=q.trim().toLowerCase();
+  const box=document.getElementById('results');
+  if(!q){box.innerHTML='';return;}
+  const hits=[];
+  (SEARCH_INDEX||[]).forEach(doc=>{
+    const text=doc.text.toLowerCase();
+    let idx=0, count=0; const snippets=[];
+    while((idx=text.indexOf(q,idx))!==-1 && snippets.length<3){
+      const a=Math.max(0,idx-60), b=Math.min(doc.text.length, idx+q.length+80);
+      snippets.push(doc.text.slice(a,b).replace(/</g,'&lt;'));
+      idx+=q.length; count++;
+    }
+    if(count) hits.push({doc,count,snippets});
+  });
+  hits.sort((a,b)=>b.count-a.count);
+  box.innerHTML=hits.slice(0,50).map(h=>`<div class="card" style="margin-bottom:10px">
+    <a href="${h.doc.url}"><strong>${h.doc.title}</strong></a> · ${h.count} 处
+    <pre style="white-space:pre-wrap;background:transparent;color:var(--muted);font-size:13px">${h.snippets.map(s=>'…'+s+'…').join('\n---\n')}</pre>
+  </div>`).join('') || '<p class="muted">无结果</p>';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const params=new URLSearchParams(location.search);
+  const q=params.get('q')||'';
+  document.getElementById('q').value=q;
+  document.getElementById('q').oninput=e=>search(e.target.value);
+  if(q) search(q);
+});
+</script>
+
+
+</body></html>

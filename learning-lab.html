@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>机制实验 · CS329Z 自学站</title>
+<link rel="stylesheet" href="vendor/katex/katex.min.css"/>
+<link rel="stylesheet" href="css/site.css"/>
+<script src="vendor/marked.min.js"></script>
+<script defer src="vendor/katex/katex.min.js"></script>
+<script defer src="vendor/katex/auto-render.min.js"></script>
+<script defer src="vendor/mermaid.min.js"></script>
+<script src="js/site-shell.js"></script>
+<script src="js/app.js"></script>
+<script src="js/render.md.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/flashcards.js"></script>
+<script src="js/graph.js"></script>
+<script src="data/meta.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  if(window.mermaid) mermaid.initialize({startOnLoad:false, theme: document.documentElement.getAttribute('data-theme')==='dark'?'dark':'default'});
+});
+</script>
+<link rel="stylesheet" href="css/learning.css"/>
+<script src="data/learning.js"></script>
+<script defer src="js/learning.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#mainContent">跳到主要内容</a>
+<header class="topbar"></header>
+
+<div class="layout">
+
+<main class="main" id="mainContent">
+<section class="hero"><span class="eyebrow">MECHANISM LAB / 自编机制示意</span><h1>先做预测，<br>再让机制给你反馈。</h1><p>三个不用 API 或 GPU 的小实验。先回答问题，再调参数、走一遍流程，把观察带回课程和真实作业。</p></section>
+<div id="learningLab"></div>
+</main></div>
+
+
+</body></html>
